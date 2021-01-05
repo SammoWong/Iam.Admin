@@ -1,3 +1,4 @@
+using Iam.Jwt;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,10 @@ namespace Iam.Identity.ServiceHost
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Iam.Identity.ServiceHost", Version = "v1" });
             });
+
+            var jwtConfig = Configuration.GetSection("Jwt").Get<JwtConfig>();
+            services.Configure<JwtConfig>(Configuration.GetSection("Jwt"));
+            services.AddJwt(jwtConfig);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
