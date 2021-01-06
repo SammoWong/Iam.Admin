@@ -35,7 +35,6 @@ namespace Iam.Identity.ServiceHost
             });
 
             var jwtConfig = Configuration.GetSection("Jwt").Get<JwtConfig>();
-            services.Configure<JwtConfig>(Configuration.GetSection("Jwt"));
             services.AddJwt(jwtConfig);
         }
 
@@ -53,6 +52,8 @@ namespace Iam.Identity.ServiceHost
 
             app.UseRouting();
 
+            //ÆôÓÃÈÏÖ¤
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

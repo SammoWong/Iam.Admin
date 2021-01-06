@@ -21,6 +21,7 @@ namespace Iam.Jwt
             })
             .AddJwtBearer(o =>
             {
+                //验证配置，比如是否验证发布者，订阅者，密钥，以及过期时间等
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,

@@ -26,6 +26,6 @@ namespace Iam.Jwt
         /// <summary>
         /// 密钥
         /// </summary>
-        public string SecurityKey { get; }
+        public string SecurityKey { get; set; }
     }
 }

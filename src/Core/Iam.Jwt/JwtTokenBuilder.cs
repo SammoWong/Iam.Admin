@@ -11,6 +11,12 @@ namespace Iam.Jwt
 {
     public class JwtTokenBuilder
     {
+        /// <summary>
+        /// 生成基于JWT的Token
+        /// </summary>
+        /// <param name="claims"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public static JwtToken BuildJwtToken(Claim[] claims, JwtConfig config)
         {
             var now = DateTime.Now;
