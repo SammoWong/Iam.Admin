@@ -13,21 +13,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{5C2507
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{8C99142D-7254-4B0B-84BC-7C4FD8943B46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.Identity.ServiceHost", "src\Services\Identity\Iam.Identity.ServiceHost\Iam.Identity.ServiceHost.csproj", "{5AF0234E-A2AC-483B-82F2-6D6187A79D4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.Identity.ServiceHost", "src\Services\Identity\Iam.Identity.ServiceHost\Iam.Identity.ServiceHost.csproj", "{5AF0234E-A2AC-483B-82F2-6D6187A79D4F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6773CFD9-0E95-4CF2-9821-90DF884AAA6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.System.ServiceHost", "src\Services\System\Iam.System.ServiceHost\Iam.System.ServiceHost.csproj", "{F6B2061D-C508-4ABA-85DF-D23F6AD29E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.System.ServiceHost", "src\Services\System\Iam.System.ServiceHost\Iam.System.ServiceHost.csproj", "{F6B2061D-C508-4ABA-85DF-D23F6AD29E2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.Core", "src\Core\Iam.Core\Iam.Core.csproj", "{F05F7F79-34D5-4AD6-9BB9-80F4AD062C4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.Core", "src\Core\Iam.Core\Iam.Core.csproj", "{F05F7F79-34D5-4AD6-9BB9-80F4AD062C4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.System.Domain", "src\Services\System\Iam.Admin.Domain\Iam.System.Domain.csproj", "{B0BF1BDB-F277-469E-85D5-F046EA901143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.System.Domain", "src\Services\System\Iam.Admin.Domain\Iam.System.Domain.csproj", "{B0BF1BDB-F277-469E-85D5-F046EA901143}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.System.Application", "src\Services\System\Iam.Admin.Application\Iam.System.Application.csproj", "{3F0F7C60-71D8-427E-A1A5-4623DF962040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.System.Application", "src\Services\System\Iam.Admin.Application\Iam.System.Application.csproj", "{3F0F7C60-71D8-427E-A1A5-4623DF962040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.System.Infrastructure", "src\Services\System\Iam.Admin.Infrastructure\Iam.System.Infrastructure.csproj", "{D9408BDC-70EE-419C-9071-22A59CE2C0D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.System.Infrastructure", "src\Services\System\Iam.Admin.Infrastructure\Iam.System.Infrastructure.csproj", "{D9408BDC-70EE-419C-9071-22A59CE2C0D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.Jwt", "src\Core\Iam.Jwt\Iam.Jwt.csproj", "{1D85F49D-927F-4CD8-BB8E-33DF9CB23BAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.Jwt", "src\Core\Iam.Jwt\Iam.Jwt.csproj", "{1D85F49D-927F-4CD8-BB8E-33DF9CB23BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.HealthCheck", "src\Core\Iam.HealthCheck\Iam.HealthCheck.csproj", "{405AAFE6-D742-408D-B58C-9B8D607E173D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HealthCheck", "HealthCheck", "{73A4FA79-F460-42B4-B0F6-7E9A3A139CF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.HealthCheck.Hosted", "src\Services\HealthCheck\Iam.HealthCheck.Hosted\Iam.HealthCheck.Hosted.csproj", "{F7985E67-E600-4BC5-A66F-D604FE7349EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,14 @@ Global
 		{1D85F49D-927F-4CD8-BB8E-33DF9CB23BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D85F49D-927F-4CD8-BB8E-33DF9CB23BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D85F49D-927F-4CD8-BB8E-33DF9CB23BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{405AAFE6-D742-408D-B58C-9B8D607E173D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405AAFE6-D742-408D-B58C-9B8D607E173D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405AAFE6-D742-408D-B58C-9B8D607E173D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405AAFE6-D742-408D-B58C-9B8D607E173D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7985E67-E600-4BC5-A66F-D604FE7349EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7985E67-E600-4BC5-A66F-D604FE7349EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7985E67-E600-4BC5-A66F-D604FE7349EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7985E67-E600-4BC5-A66F-D604FE7349EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +94,9 @@ Global
 		{3F0F7C60-71D8-427E-A1A5-4623DF962040} = {5C250717-02DC-40C6-A41F-332DDFA241DF}
 		{D9408BDC-70EE-419C-9071-22A59CE2C0D4} = {5C250717-02DC-40C6-A41F-332DDFA241DF}
 		{1D85F49D-927F-4CD8-BB8E-33DF9CB23BAD} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
+		{405AAFE6-D742-408D-B58C-9B8D607E173D} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
+		{73A4FA79-F460-42B4-B0F6-7E9A3A139CF4} = {16D6208E-961D-43A0-883B-2C78F1B954AE}
+		{F7985E67-E600-4BC5-A66F-D604FE7349EC} = {73A4FA79-F460-42B4-B0F6-7E9A3A139CF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFE33178-890D-4EA2-893B-1003212EA516}

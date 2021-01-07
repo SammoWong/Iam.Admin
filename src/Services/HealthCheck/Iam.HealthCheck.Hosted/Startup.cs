@@ -1,5 +1,3 @@
-using Iam.HealthCheck;
-using Iam.Jwt;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,13 +6,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Iam.Identity.ServiceHost
+namespace Iam.HealthCheck.Hosted
 {
     public class Startup
     {
@@ -28,15 +25,16 @@ namespace Iam.Identity.ServiceHost
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHealthCheck()/*.AddMySql("SqlConnection")*/;
+            services.AddHealthCheck();
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Iam.Identity.ServiceHost", Version = "v1" });
-            });
 
-            var jwtConfig = Configuration.GetSection("Jwt").Get<JwtConfig>();
-            services.AddJwt(jwtConfig);
+            services.AddHealthChecksUI(setup =>
+            {
+                //也可以在配置文件中配置endpoint
+                setup.MaximumHistoryEntriesPerEndpoint(100);
+                setup.AddHealthCheckEndpoint("HealthCheck Endpoint", "http://localhost:10002/health");
+            })
+            .AddInMemoryStorage();//内存存储
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,22 +43,19 @@ namespace Iam.Identity.ServiceHost
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Iam.Identity.ServiceHost v1"));
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            //启用认证
-            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHealthCheck();
+                endpoints.MapHealthChecksUI();
             });
         }
     }

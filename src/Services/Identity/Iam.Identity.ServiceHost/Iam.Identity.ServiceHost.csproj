@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Iam.HealthCheck\Iam.HealthCheck.csproj" />
     <ProjectReference Include="..\..\..\Core\Iam.Jwt\Iam.Jwt.csproj" />
   </ItemGroup>
 
