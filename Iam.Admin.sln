@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HealthCheck", "HealthCheck"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.HealthCheck.Hosted", "src\Services\HealthCheck\Iam.HealthCheck.Hosted\Iam.HealthCheck.Hosted.csproj", "{F7985E67-E600-4BC5-A66F-D604FE7349EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.Data", "src\Core\Iam.Data\Iam.Data.csproj", "{679C12A1-A1A6-4FF5-A5F0-850AEED15144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.Data.EntityFrameworkCore", "src\Core\Iam.Data.EntityFrameworkCore\Iam.Data.EntityFrameworkCore.csproj", "{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +81,14 @@ Global
 		{F7985E67-E600-4BC5-A66F-D604FE7349EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7985E67-E600-4BC5-A66F-D604FE7349EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7985E67-E600-4BC5-A66F-D604FE7349EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{679C12A1-A1A6-4FF5-A5F0-850AEED15144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{679C12A1-A1A6-4FF5-A5F0-850AEED15144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{679C12A1-A1A6-4FF5-A5F0-850AEED15144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{679C12A1-A1A6-4FF5-A5F0-850AEED15144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +109,8 @@ Global
 		{405AAFE6-D742-408D-B58C-9B8D607E173D} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
 		{73A4FA79-F460-42B4-B0F6-7E9A3A139CF4} = {16D6208E-961D-43A0-883B-2C78F1B954AE}
 		{F7985E67-E600-4BC5-A66F-D604FE7349EC} = {73A4FA79-F460-42B4-B0F6-7E9A3A139CF4}
+		{679C12A1-A1A6-4FF5-A5F0-850AEED15144} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
+		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFE33178-890D-4EA2-893B-1003212EA516}
