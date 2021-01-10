@@ -14,9 +14,9 @@ namespace Iam.Data.Repositories
 
         Task InsertAsync(TEntity entity);
 
-        void InsertRange(IEnumerable<IEntity> entities);
+        void InsertRange(IEnumerable<TEntity> entities);
 
-        Task InsertRangeAsync(IEnumerable<IEntity> entities);
+        Task InsertRangeAsync(IEnumerable<TEntity> entities);
 
         void Delete(TEntity entity);
 
@@ -34,8 +34,8 @@ namespace Iam.Data.Repositories
 
         Task UpdateAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, TEntity>> expression);
 
-        void UpdateRange(IEnumerable<IEntity> entities);
+        void UpdateRange(IEnumerable<TEntity> entities);
 
-        Task UpdateRangeAsync(IEnumerable<IEntity> entities);
+        Task UpdateRangeAsync(IEnumerable<TEntity> entities);
     }
 }

@@ -11,7 +11,7 @@ namespace Iam.Data.Repositories
 {
     public interface IQueryRepository<TEntity> where TEntity : class, IEntity
     {
-        IQueryable<TEntity> Queryable { get; }
+        IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> predicate = null);
 
         long Count(Expression<Func<TEntity, bool>> predicate = null);
 

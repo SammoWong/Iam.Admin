@@ -23,7 +23,7 @@ namespace Iam.Core.ApiModels
         /// <summary>
         /// 总页数
         /// </summary>
-        public int TotalPages { get; set; }
+        public int PageCount => (int)((TotalCount + PageSize - 1) / PageSize);
 
         /// <summary>
         /// 是否有上一页
@@ -37,7 +37,7 @@ namespace Iam.Core.ApiModels
         /// </summary>
         public bool HasNextPage
         {
-            get { return PageIndex + 1 < TotalPages; }
+            get { return PageIndex + 1 < PageCount; }
         }
 
 
