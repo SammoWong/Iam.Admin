@@ -18,21 +18,24 @@ namespace Iam.Data.EntityFrameworkCore.Repositories
         {
             DbContext = dbContext;
         }
+
         private DbSet<TEntity> DbSet => DbContext.Set<TEntity>();
 
         public virtual void Delete(TEntity entity)
         {
             DbSet.Remove(entity);
+            DbContext.SaveChanges();
         }
 
         public virtual void Delete(Expression<Func<TEntity, bool>> predicate)
         {
             DbSet.Where(predicate).Delete();
+            DbContext.SaveChanges();
         }
 
         public virtual Task DeleteAsync(TEntity entity)
         {
-           return Task.Run(() => Delete(entity));
+            return Task.Run(() => Delete(entity));
         }
 
         public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
@@ -43,26 +46,31 @@ namespace Iam.Data.EntityFrameworkCore.Repositories
         public virtual void Insert(TEntity entity)
         {
             DbSet.Add(entity);
+            DbContext.SaveChanges();
         }
 
-        public virtual Task InsertAsync(TEntity entity)
+        public virtual async Task InsertAsync(TEntity entity)
         {
-            return DbSet.AddAsync(entity).AsTask();
+            await DbSet.AddAsync(entity);
+            await DbContext.SaveChangesAsync();
         }
 
         public virtual void InsertRange(IEnumerable<TEntity> entities)
         {
             DbSet.AddRange(entities);
+            DbContext.SaveChanges();
         }
 
-        public virtual Task InsertRangeAsync(IEnumerable<TEntity> entities)
+        public virtual async Task InsertRangeAsync(IEnumerable<TEntity> entities)
         {
-            return DbSet.AddRangeAsync(entities);
+            await DbSet.AddRangeAsync(entities);
+            await DbContext.SaveChangesAsync();
         }
 
         public virtual void Update(TEntity entity)
         {
             DbSet.Update(entity);
+            DbContext.SaveChanges();
         }
 
         /// <summary>
@@ -89,6 +97,7 @@ namespace Iam.Data.EntityFrameworkCore.Repositories
         public virtual void UpdateRange(IEnumerable<TEntity> entities)
         {
             DbSet.UpdateRange(entities);
+            DbContext.SaveChanges();
         }
 
         public virtual Task UpdateRangeAsync(IEnumerable<TEntity> entities)
