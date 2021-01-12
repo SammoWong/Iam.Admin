@@ -29,15 +29,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.System.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.Jwt", "src\Core\Iam.Jwt\Iam.Jwt.csproj", "{1D85F49D-927F-4CD8-BB8E-33DF9CB23BAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.HealthCheck", "src\Core\Iam.HealthCheck\Iam.HealthCheck.csproj", "{405AAFE6-D742-408D-B58C-9B8D607E173D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.HealthCheck", "src\Core\Iam.HealthCheck\Iam.HealthCheck.csproj", "{405AAFE6-D742-408D-B58C-9B8D607E173D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HealthCheck", "HealthCheck", "{73A4FA79-F460-42B4-B0F6-7E9A3A139CF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.HealthCheck.Hosted", "src\Services\HealthCheck\Iam.HealthCheck.Hosted\Iam.HealthCheck.Hosted.csproj", "{F7985E67-E600-4BC5-A66F-D604FE7349EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.HealthCheck.Hosted", "src\Services\HealthCheck\Iam.HealthCheck.Hosted\Iam.HealthCheck.Hosted.csproj", "{F7985E67-E600-4BC5-A66F-D604FE7349EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.Data", "src\Core\Iam.Data\Iam.Data.csproj", "{679C12A1-A1A6-4FF5-A5F0-850AEED15144}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.Data", "src\Core\Iam.Data\Iam.Data.csproj", "{679C12A1-A1A6-4FF5-A5F0-850AEED15144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.Data.EntityFrameworkCore", "src\Core\Iam.Data.EntityFrameworkCore\Iam.Data.EntityFrameworkCore.csproj", "{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iam.Data.EntityFrameworkCore", "src\Core\Iam.Data.EntityFrameworkCore\Iam.Data.EntityFrameworkCore.csproj", "{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iam.AspNetCore", "src\Core\Iam.AspNetCore\Iam.AspNetCore.csproj", "{9933B5EF-AA47-4642-8472-8EB2041EFCF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9933B5EF-AA47-4642-8472-8EB2041EFCF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9933B5EF-AA47-4642-8472-8EB2041EFCF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9933B5EF-AA47-4642-8472-8EB2041EFCF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9933B5EF-AA47-4642-8472-8EB2041EFCF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{F7985E67-E600-4BC5-A66F-D604FE7349EC} = {73A4FA79-F460-42B4-B0F6-7E9A3A139CF4}
 		{679C12A1-A1A6-4FF5-A5F0-850AEED15144} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
 		{A3875DFA-A665-4A1B-BA5F-9919CA0586BE} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
+		{9933B5EF-AA47-4642-8472-8EB2041EFCF9} = {6773CFD9-0E95-4CF2-9821-90DF884AAA6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFE33178-890D-4EA2-893B-1003212EA516}
