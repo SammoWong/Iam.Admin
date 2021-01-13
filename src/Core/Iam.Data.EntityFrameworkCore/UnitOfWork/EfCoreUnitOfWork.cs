@@ -27,12 +27,20 @@ namespace Iam.Data.EntityFrameworkCore.UnitOfWork
 
         public void Commit()
         {
-            _dbTransaction?.Commit();
+            try
+            {
+                _dbTransaction?.Commit();
+            }
+            finally
+            {
+                Dispose();
+            }
         }
 
         public void Rollback()
         {
             _dbTransaction?.Rollback();
+            Dispose();
         }
 
         public void Dispose()
