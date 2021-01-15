@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Iam.Data.EntityFrameworkCore.UnitOfWork
 {
-    class EfCoreUnitOfWork<TDbContext> : IUnitOfWork where TDbContext : DbContext
+    public class EfCoreUnitOfWork<TDbContext> : IUnitOfWork where TDbContext : DbContext
     {
         private readonly TDbContext _dbContext;
         private IDbContextTransaction _dbTransaction;
