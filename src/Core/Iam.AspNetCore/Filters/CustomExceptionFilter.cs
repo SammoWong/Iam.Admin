@@ -21,14 +21,28 @@ namespace Iam.AspNetCore.Filters
             }
             else
             {
-                context.Result = new JsonResult(new ApiResult<Exception>
+                if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
                 {
-                    Code = ErrorCode.Default,
-                    Message = "System Error",
-                    Data = context.Exception
-                    //description = context.Exception.Message,
-                    //stackTrace = context.Exception.StackTrace
-                });
+                    context.Result = new JsonResult(new ApiResult<Exception>
+                    {
+                        Code = ErrorCode.Default,
+                        Message = context.Exception.Message,
+                        Data = context.Exception
+                        //description = context.Exception.Message,
+                        //stackTrace = context.Exception.StackTrace
+                    });
+                }
+                else
+                {
+                    context.Result = new JsonResult(new ApiResult<Exception>
+                    {
+                        Code = ErrorCode.Default,
+                        Message = "System Error",
+                        Data = context.Exception
+                        //description = context.Exception.Message,
+                        //stackTrace = context.Exception.StackTrace
+                    });
+                }
             }
         }
     }
