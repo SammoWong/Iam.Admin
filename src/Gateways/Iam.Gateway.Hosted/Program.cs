@@ -18,9 +18,15 @@ namespace Iam.Gateway.Hosted
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((builder, configuration) =>
+                {
+                    var env = builder.HostingEnvironment;
+                    configuration.AddJsonFile($"ocelot.{env.EnvironmentName}.json", optional: false, reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                ;
     }
 }

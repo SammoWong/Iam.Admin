@@ -1,0 +1,41 @@
+/* 直连consul的配置*/
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://网关服务器IP:8888",
+    "ServiceDiscoveryProvider": {
+      "Scheme": "http",
+      "Host": "Consul服务器IP",
+      "Port": 8550,
+      "Type": "Consul"
+    },
+    //限流
+    "RateLimitOptions": {
+      "ClientWhitelist": [], //白名单
+      "EnableRateLimiting": true, //是否启用限流
+      "Period": "1s", //统计时间段：1s, 5m, 1h, 1d
+      "PeriodTimespan": 1, //多少秒之后客户端可以重试
+      "Limit": 1 //在统计时间段内允许的最大请求数量
+    }
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/{url}", //上游也就是用户输入的请求Url模板
+      "UpstreamHttpMethod": [ //上游请求http方法，可使用数组
+        "Get",
+        "Put",
+        "Post",
+        "Delete"
+      ],
+      "DownstreamScheme": "http", //下游服务http schema
+      "DownstreamPathTemplate": "/{url}",//下游请求url模板
+      "ServiceName": "consul服务名",
+      "LoadBalancerOptions": {
+        //LeastConnection – 将请求发往最空闲的那个服务器
+        //RoundRobin – 轮流发送
+        //NoLoadBalance – 总是发往第一个请求或者是服务发现
+        //CookieStickySessions -性会话类型的负载平衡
+        "Type": "RoundRobin"
+      }
+    }
+  ]
+}

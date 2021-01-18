@@ -22,7 +22,7 @@
       "dotnetRunMessages": "true",
       "launchBrowser": true,
       "launchUrl": "healthchecks-ui",
-      "applicationUrl": "http://localhost:10002",
+      "applicationUrl": "http://localhost:9001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

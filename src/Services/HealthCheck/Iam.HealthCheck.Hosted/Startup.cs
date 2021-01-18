@@ -32,7 +32,7 @@ namespace Iam.HealthCheck.Hosted
             {
                 //也可以在配置文件中配置endpoint
                 setup.MaximumHistoryEntriesPerEndpoint(100);
-                setup.AddHealthCheckEndpoint("HealthCheck Endpoint", "http://localhost:10002/health");
+                setup.AddHealthCheckEndpoint("HealthCheck Endpoint", "http://localhost:9001/health");
             })
             .AddInMemoryStorage();//内存存储
         }
