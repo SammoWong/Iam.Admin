@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Iam.ServiceDiscovery
 {
-    interface IServiceDiscovery
+    public interface IServiceDiscovery
     {
+        Task<IEnumerable<ServiceInformation>> GetServicesAsync(string serviceName);
     }
 }

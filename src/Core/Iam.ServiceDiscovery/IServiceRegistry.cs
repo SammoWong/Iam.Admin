@@ -8,5 +8,9 @@ namespace Iam.ServiceDiscovery
 {
     public interface IServiceRegistry
     {
+        Task<ServiceInformation> RegisterServiceAsync(string serviceName, string version, string host, 
+            int port, IEnumerable<string> tags = null);
+
+        Task DeregisterServiceAsync(string serviceId);
     }
 }

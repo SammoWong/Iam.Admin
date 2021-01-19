@@ -12,8 +12,6 @@ namespace Iam.ServiceDiscovery
 
         public string Name { get; set; }
 
-        public string Version { get; set; }
-
         public string Host { get; set; }
 
         public int Port { get; set; }
@@ -21,6 +19,5 @@ namespace Iam.ServiceDiscovery
         public IEnumerable<string> Tags { get; set; }
 
         public Uri ToUri(string scheme = "http") => new Uri($"{scheme}://" + Host + ":" + Port);
-        
     }
 }

@@ -1,5 +1,6 @@
 using Iam.HealthCheck;
 using Iam.Jwt;
+using Iam.ServiceDiscovery.Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +38,8 @@ namespace Iam.Identity.ServiceHost
 
             var jwtConfig = Configuration.GetSection("Jwt").Get<JwtConfig>();
             services.AddJwt(jwtConfig);
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +65,9 @@ namespace Iam.Identity.ServiceHost
                 endpoints.MapControllers();
                 endpoints.MapHealthCheck();
             });
+
+            var consulConfig = Configuration.GetSection("Consul").Get<ConsulConfig>();
+            app.RegisterToConsul(consulConfig);
         }
     }
 }

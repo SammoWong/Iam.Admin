@@ -1,4 +1,6 @@
+using Iam.ServiceDiscovery.Consul;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog;
@@ -33,6 +35,12 @@ namespace Iam.Identity.ServiceHost
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureAppConfiguration((context, builder) =>
+                {
+                    var configuration = builder.Build();
+                    var consulOption = configuration.GetSection("Consul").Get<ConsulConfig>();
+                    builder.AddConsul(new[] { consulOption.ConsulUrl }, consulOption.ConsulKeyPath);
                 })
                 .ConfigureLogging((content, builder) =>
                 {
