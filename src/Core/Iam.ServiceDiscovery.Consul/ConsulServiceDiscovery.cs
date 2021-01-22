@@ -9,9 +9,9 @@ namespace Iam.ServiceDiscovery.Consul
 {
     public class ConsulServiceDiscovery : IServiceDiscovery
     {
-        private readonly ConsulClient _consul;
+        private readonly IConsulClient _consul;
 
-        public ConsulServiceDiscovery(ConsulClient consul)
+        public ConsulServiceDiscovery(IConsulClient consul)
         {
             _consul = consul;
         }

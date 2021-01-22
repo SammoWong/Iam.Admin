@@ -16,20 +16,23 @@ namespace Iam.ServiceDiscovery.Consul
             _consul = consul;
         }
 
-        public async Task<ServiceInformation> RegisterServiceAsync(string serviceName, string version, string host, int port, IEnumerable<string> tags = null)
+        public async Task<ServiceInformation> RegisterServiceAsync(string serviceName, string serviceUrl, string healthCheckUrl, IEnumerable<string> tags = null)
         {
-            var serviceId = GetServiceId(serviceName, host, port);
+            var serviceUri = new Uri(serviceUrl);
+            var serviceId = GetServiceId(serviceName, serviceUri.Host, serviceUri.Port);
+            var scheme = serviceUri.Scheme;
+
             var registration = new AgentServiceRegistration
             {
                 ID = serviceId,
                 Name = serviceName,
                 Tags = tags?.ToArray(),
-                Address = host,
-                Port = port,
+                Address = serviceUri.Host,
+                Port = serviceUri.Port,
                 Check = new AgentCheckRegistration()
                 {
-                    HTTP = $"{host}:{port}",
-                    Status = HealthStatus.Passing,
+                    HTTP = $"{scheme}://{serviceUri.Host}:{serviceUri.Port}{healthCheckUrl}",
+                    //Status = HealthStatus.Passing,
                     Timeout = TimeSpan.FromSeconds(3),
                     Interval = TimeSpan.FromSeconds(10),
                     //服务启动多久后注册
@@ -54,7 +57,7 @@ namespace Iam.ServiceDiscovery.Consul
             await _consul.Agent.ServiceDeregister(serviceId);
         }
 
-        private string GetServiceId(string serviceName, string host, int port)
+        public string GetServiceId(string serviceName, string host, int port)
         {
             return $"{serviceName}.{host}.{port}";
         }

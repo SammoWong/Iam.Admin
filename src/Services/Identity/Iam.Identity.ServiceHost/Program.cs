@@ -38,9 +38,10 @@ namespace Iam.Identity.ServiceHost
                 })
                 .ConfigureAppConfiguration((context, builder) =>
                 {
-                    var configuration = builder.Build();
-                    var consulOption = configuration.GetSection("Consul").Get<ConsulConfig>();
-                    builder.AddConsul(new[] { consulOption.ConsulUrl }, consulOption.ConsulKeyPath);
+                    //var configuration = builder.Build();
+                    //var consulOption = configuration.GetSection("Consul").Get<ConsulConfig>();
+                    ////builder.AddConsul(new[] { consulOption.ConsulUrl }, consulOption.ConsulKeyPath);
+                    //builder.AddConsul(new[] { consulOption.ConsulUrl }, consulOption.ConsulKeyPath);
                 })
                 .ConfigureLogging((content, builder) =>
                 {

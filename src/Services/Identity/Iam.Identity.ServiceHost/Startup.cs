@@ -1,6 +1,7 @@
 using Iam.HealthCheck;
 using Iam.Jwt;
 using Iam.ServiceDiscovery.Consul;
+using Iam.ServiceDiscovery.LoadBalancers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,7 +40,8 @@ namespace Iam.Identity.ServiceHost
             var jwtConfig = Configuration.GetSection("Jwt").Get<JwtConfig>();
             services.AddJwt(jwtConfig);
 
-            
+            var consulConfig = Configuration.GetSection("Consul").Get<ConsulConfig>();
+            services.AddConsul(consulConfig.ConsulUrl, loadBalancer: TypeLoadBalancer.RoundRobin);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

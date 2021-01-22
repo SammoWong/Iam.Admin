@@ -8,8 +8,17 @@ namespace Iam.ServiceDiscovery
 {
     public interface IServiceRegistry
     {
-        Task<ServiceInformation> RegisterServiceAsync(string serviceName, string version, string host, 
-            int port, IEnumerable<string> tags = null);
+        string GetServiceId(string serviceName, string host, int port);
+
+        /// <summary>
+        /// 服务注册
+        /// </summary>
+        /// <param name="serviceName"></param>
+        /// <param name="serviceUrl"></param>
+        /// <param name="healthCheckUrl"></param>
+        /// <param name="tags"></param>
+        /// <returns></returns>
+        Task<ServiceInformation> RegisterServiceAsync(string serviceName, string serviceUrl, string healthCheckUrl, IEnumerable<string> tags = null);
 
         Task DeregisterServiceAsync(string serviceId);
     }
