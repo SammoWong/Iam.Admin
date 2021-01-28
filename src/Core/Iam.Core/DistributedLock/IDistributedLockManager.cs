@@ -13,7 +13,9 @@ namespace Iam.Core.DistributedLock
         /// <param name="expiryTime">过期时间</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<bool> AcquireLock(string id, TimeSpan expiryTime, CancellationToken? cancellationToken = null);
+        bool AcquireLock(string id, TimeSpan expiryTime);
+
+        Task<bool> AcquireLockAsync(string id, TimeSpan expiryTime, CancellationToken? cancellationToken = null);
 
         /// <summary>
         /// 获取分布式锁，如果失败按照一定时间重试
@@ -24,13 +26,17 @@ namespace Iam.Core.DistributedLock
         /// <param name="retryTime">重试间隔</param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        Task<bool> AcquireLock(string id, TimeSpan expiryTime, TimeSpan waitTime, TimeSpan retryTime, CancellationToken? cancellationToken = null);
+        bool AcquireLock(string id, TimeSpan expiryTime, TimeSpan waitTime, TimeSpan retryTime);
+
+        Task<bool> AcquireLockAsync(string id, TimeSpan expiryTime, TimeSpan waitTime, TimeSpan retryTime, CancellationToken? cancellationToken = null);
 
         /// <summary>
         /// 释放锁
         /// </summary>
         /// <param name="id">锁Id</param>
         /// <returns></returns>
-        Task ReleaseLock(string id);
+        void ReleaseLock(string id);
+
+        Task ReleaseLockAsync(string id);
     }
 }

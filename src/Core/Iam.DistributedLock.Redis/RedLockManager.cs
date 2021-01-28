@@ -22,7 +22,21 @@ namespace Iam.DistributedLock.Redis
             _redlockFactory = RedLockFactory.Create(new List<RedLockMultiplexer> { ConnectionMultiplexer.Connect(connectionString) });
         }
 
-        public async Task<bool> AcquireLock(string id, TimeSpan expiryTime, CancellationToken? cancellationToken = null)
+        public bool AcquireLock(string id, TimeSpan expiryTime)
+        {
+            var redLock = _redlockFactory.CreateLock(id, expiryTime);
+            if (redLock.IsAcquired)
+            {
+                lock (ManagedLocks)
+                {
+                    ManagedLocks.Add(redLock);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> AcquireLockAsync(string id, TimeSpan expiryTime, CancellationToken? cancellationToken = null)
         {
             var redLock = await _redlockFactory.CreateLockAsync(id, expiryTime);
             if (redLock.IsAcquired)
@@ -36,9 +50,9 @@ namespace Iam.DistributedLock.Redis
             return false;
         }
 
-        public async Task<bool> AcquireLock(string id, TimeSpan expiryTime, TimeSpan waitTime, TimeSpan retryTime, CancellationToken? cancellationToken = null)
+        public bool AcquireLock(string id, TimeSpan expiryTime, TimeSpan waitTime, TimeSpan retryTime)
         {
-            var redLock = await _redlockFactory.CreateLockAsync(id, expiryTime, waitTime, retryTime);
+            var redLock = _redlockFactory.CreateLock(id, expiryTime, waitTime, retryTime);
 
             if (redLock.IsAcquired)
             {
@@ -51,7 +65,38 @@ namespace Iam.DistributedLock.Redis
             return false;
         }
 
-        public Task ReleaseLock(string id)
+        public async Task<bool> AcquireLockAsync(string id, TimeSpan expiryTime, TimeSpan waitTime, TimeSpan retryTime, CancellationToken? cancellationToken = null)
+        {
+            var redLock = await _redlockFactory.CreateLockAsync(id, expiryTime, waitTime, retryTime, cancellationToken);
+
+            if (redLock.IsAcquired)
+            {
+                lock (ManagedLocks)
+                {
+                    ManagedLocks.Add(redLock);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public void ReleaseLock(string id)
+        {
+            lock (ManagedLocks)
+            {
+                foreach (var redLock in ManagedLocks)
+                {
+                    if (redLock.Resource == id)
+                    {
+                        redLock.Dispose();
+                        ManagedLocks.Remove(redLock);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public Task ReleaseLockAsync(string id)
         {
             lock (ManagedLocks)
             {
