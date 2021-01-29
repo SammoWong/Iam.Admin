@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Iam.Aop.Castle.Core.Interceptors
 {
+    /// <summary>
+    /// 分布式锁拦截器
+    /// </summary>
     public class DistributedLockInterceptor : IInterceptor
     {
         private readonly ILogger<DistributedLockInterceptor> _logger;

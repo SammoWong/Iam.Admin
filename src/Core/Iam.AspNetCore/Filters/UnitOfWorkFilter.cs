@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Iam.AspNetCore.Filters
 {
+    /// <summary>
+    /// 工作单元过滤器
+    /// </summary>
     public class UnitOfWorkFilter : IAsyncActionFilter
     {
         private readonly IUnitOfWork _unitOfWork;
