@@ -27,7 +27,7 @@ namespace Iam.Aop.Castle.Core.Interceptors
             var uowAttr = method.GetCustomAttribute<UnitOfWorkAttribute>();
             if (uowAttr == null)
             {
-                invocation.Proceed();//直接执行被拦截方法
+                invocation.Proceed();//执行下一个拦截器或者当前方法
             }
             else
             {

@@ -10,10 +10,15 @@ namespace Iam.Core.Caching
             CacheKey = cacheKey;
         }
 
-        public CachingAttribute(string cacheKey, TimeSpan expiration)
+        /// <summary>
+        /// 缓存特性
+        /// </summary>
+        /// <param name="cacheKey">缓存Key</param>
+        /// <param name="seconds">过期时间秒</param>
+        public CachingAttribute(string cacheKey, int seconds)
         {
             CacheKey = cacheKey;
-            Expiration = expiration;
+            Expiration = TimeSpan.FromSeconds(seconds);
         }
 
         public string CacheKey { get; set; }

@@ -10,6 +10,9 @@ using System.Text.Json;
 
 namespace Iam.Aop.Castle.Core.Interceptors
 {
+    /// <summary>
+    /// 缓存拦截器，一般此拦截器需要最后执行
+    /// </summary>
     public class CachingInterceptor : IInterceptor
     {
         private readonly ICache _cache;
@@ -26,7 +29,7 @@ namespace Iam.Aop.Castle.Core.Interceptors
             //无此特性或者无返回值或者返回值为Task时，跳过此拦截器
             if(cachingAttr == null || method.ReturnType == typeof(void) || method.ReturnType == typeof(Task))
             {
-                invocation.Proceed();
+                invocation.Proceed();//执行下一个拦截器或者当前方法
             }
             else
             {
@@ -45,7 +48,7 @@ namespace Iam.Aop.Castle.Core.Interceptors
                     invocation.ReturnValue = (typeof(Task).IsAssignableFrom(method.ReturnType)) ? Task.FromResult(result) : result;
                     return;
                 }
-                //执行当前的方法
+                //执行下一个拦截器或者当前方法
                 invocation.Proceed();
                 //存入缓存
                 if (!string.IsNullOrWhiteSpace(cacheKey))
@@ -56,6 +59,7 @@ namespace Iam.Aop.Castle.Core.Interceptors
                     {
                         var resultProperty = type.GetProperty("Result");
                         response = resultProperty.GetValue(invocation.ReturnValue);
+                        type = resultProperty.PropertyType;
                     }
                     else
                     {
@@ -64,7 +68,8 @@ namespace Iam.Aop.Castle.Core.Interceptors
                     if (response == null) 
                         response = string.Empty;
 
-                    _cache.TrySet(cacheKey, response, expiration);
+                    var jsonValue = JsonSerializer.Serialize(response, type);
+                    _cache.TrySet(cacheKey, jsonValue, expiration);
                 }
             }
         }

@@ -13,8 +13,8 @@
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "http://localhost:15000",
+      "launchUrl": "api/Values/GetCurrentTime",
+      "applicationUrl": "http://localhost:15000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
