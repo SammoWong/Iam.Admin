@@ -16,7 +16,7 @@ namespace Iam.EventBus.Extensions
         public static IEventBusBuilder AddEventBus(this IServiceCollection services, Action<IEventBusBuilder> action)
         {
             var service = services.First(x => x.ServiceType == typeof(IConfiguration));
-            var configuration = (IConfiguration)service.ImplementationInstance;
+            var configuration = (IConfiguration)service.ImplementationFactory.Invoke(null);
             var builder = new EventBusBuilder(services, configuration);
             action(builder);
             return builder;

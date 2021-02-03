@@ -30,7 +30,7 @@ namespace Iam.Sample.EventBus
         {
             services.AddControllers();
             //添加消息总线
-            services.AddEventBus(Configuration, builder => builder.UseRabbitMQ());
+            services.AddEventBus(builder => builder.UseRabbitMQ());
             //添加事件处理程序
             services.AddTransient<MessageReceivedIntegrationEventHandler>();
         }
