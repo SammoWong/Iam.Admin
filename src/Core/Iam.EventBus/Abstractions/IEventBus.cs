@@ -53,6 +53,6 @@ namespace Iam.EventBus.Abstractions
             where TH : IDynamicIntegrationEventHandler;
 
         //TODO:FamilyBucket
-        //void StartSubscribe();
+        void StartSubscribe();
     }
 }
